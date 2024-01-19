@@ -1,5 +1,6 @@
 package com.example.dddhibernate.domain;
 
+import com.example.dddhibernate.dto.OrderItemDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -24,5 +25,11 @@ public class OrderItem {
   @ManyToOne
   Product product;
 
+  public static OrderItem fromDto(OrderItemDto orderItemDto, Product product) {
+    OrderItem orderItem = new OrderItem();
+    orderItem.setQuantity(orderItemDto.getQuantity());
+    orderItem.setProduct(product);
+    return orderItem;
+  }
 
 }
